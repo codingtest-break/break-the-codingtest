@@ -1,21 +1,15 @@
 package backtracking
 
-//import java.util.*
-
 fun main() {
     val nAndM = readln().split(" ").map { it.toInt() }
 
-    val n = nAndM[0]
-    val m = nAndM[1]
-
-    print(Main15649(n, m).solution())
-//    test().testing()
+    print(Main15649(nAndM[0], nAndM[1]).solution())
 }
 
 class Main15649(private val n: Int, private val m: Int) {
     fun solution(): String {
-        val visited: MutableList<Boolean> = MutableList(n) { false }
-        val nums: MutableList<Int> = MutableList(m) { 0 }
+        val visited = BooleanArray(n)
+        val nums = IntArray(m)
         val stringBuilder = StringBuilder()
 
          fun backtrack(depth: Int) {
@@ -38,15 +32,3 @@ class Main15649(private val n: Int, private val m: Int) {
         return stringBuilder.toString()
     }
 }
-//
-//class test() {
-//    fun ArrayList<Int>.last1() : Unit {
-//        print(this.last())
-//    }
-//    fun testing() {
-//       val list =  arrayListOf<Int>(1, 2, 3)
-//        list.last1()
-//    }
-//
-//
-//}
