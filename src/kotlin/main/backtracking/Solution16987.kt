@@ -45,17 +45,18 @@ class Solution16987 {
                 return
             }
 
-            var isHit = false
+            if (eggArray[depth]!!.amIBroken() || totalNumOfBroken == n - 1) {
+                backTrack(depth + 1, totalNumOfBroken)
+                return
+            }
+
             for (i in 0 until n) {
-                if (depth == i ||
-                    eggArray[i]!!.amIBroken() ||
-                    eggArray[depth]!!.amIBroken()) {
+                if (depth == i || eggArray[i]!!.amIBroken()) {
                     continue
                 }
 
                 var numOfBroken = totalNumOfBroken
 
-                isHit = true
                 Egg.crash(eggArray[depth]!!, eggArray[i]!!)
                 if (eggArray[depth]!!.amIBroken()) {
                     numOfBroken++
@@ -65,9 +66,6 @@ class Solution16987 {
                 }
                 backTrack(depth + 1, numOfBroken)
                 Egg.revive(eggArray[depth]!!, eggArray[i]!!)
-            }
-            if (!isHit) {
-                backTrack(depth + 1, totalNumOfBroken)
             }
         }
 
